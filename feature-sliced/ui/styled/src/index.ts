@@ -1,24 +1,11 @@
 import { useTheme as useEmotionTheme } from '@emotion/react'
-
-import * as EmotionStyled from '@emotion/styled'
-export { EmotionStyled }
 export * from '@emotion/styled'
-
-import * as EmotionReact from '@emotion/react'
-export { EmotionReact }
 export * from '@emotion/react'
-
 export { cx } from '@emotion/css'
-
-import * as StyledSystem from 'styled-system'
-export { StyledSystem }
 export * from 'styled-system'
-
 export type { Theme as StyledTheme } from 'styled-system'
-
 import { type Theme } from '@emotion/react'
 export { Theme }
-
 export * from './combine.js'
 export * from './prop-tools.js'
 export * from './style-fn.js'
@@ -73,9 +60,6 @@ export {
   saturate,
   math
 } from 'polished'
-
-import * as Polished from 'polished'
-export { Polished }
 
 export { default as styled } from '@emotion/styled'
 
