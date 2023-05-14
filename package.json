@@ -1,0 +1,14 @@
+{
+  "name": "design",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "feature-sliced/**/*"
+  ],
+  "devDependencies": {
+    "@lmpx-config/eslint": "0.0.4",
+    "eslint": "^8.40.0",
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.4"
+  }
+}
