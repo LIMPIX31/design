@@ -16,9 +16,8 @@ export * from 'styled-system'
 
 export type { Theme as StyledTheme } from 'styled-system'
 
-import { type Theme } from '@emotion/react'
-export { Theme }
-
+import type { Theme } from './theme.js'
+export type { Theme }
 export * from './combine.js'
 export * from './prop-tools.js'
 export * from './style-fn.js'
