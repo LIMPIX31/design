@@ -81,3 +81,5 @@ export { default as styled } from '@emotion/styled'
 export function useTheme<T = Theme>() {
   return useEmotionTheme() as T
 }
+
+export type { Props } from './props.js'

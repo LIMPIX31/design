@@ -1,4 +1,5 @@
 import type { InterpolationPrimitive } from '@emotion/serialize'
 import type { Theme } from '@emotion/react'
+import type { Props } from './props'
 
-export type StyleFn<T = {}> = (props: (Record<any, any> | { theme: Theme }) & T) => InterpolationPrimitive
+export type StyleFn = (props: Props & { theme: Theme }) => InterpolationPrimitive

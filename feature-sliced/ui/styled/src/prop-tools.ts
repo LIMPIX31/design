@@ -1,40 +1,41 @@
 import type { StyleFn } from './style-fn.js'
+import type { Props } from './props'
 
-export type PropSelector<P, V> = keyof P | ((props: P) => V)
+export type PropSelector<V> = keyof Props | ((props: Props) => V)
 
-type BooleanMatch<P> = {
-  true?: StyleFn<P>
-  false?: StyleFn<P>
+type BooleanMatch = {
+  true?: StyleFn
+  false?: StyleFn
 }
 
-type MatchObject<P, S> = S extends boolean ? BooleanMatch<P> : { [K in NonNullable<S> as any]?: StyleFn<P> }
+type MatchObject<S> = S extends boolean ? BooleanMatch : { [K in NonNullable<S> as any]?: StyleFn }
 
-function extractPropFromSelector<P, S>(props: P, selector: PropSelector<P, S>): S {
+function extractPropFromSelector<S>(props: Props, selector: PropSelector<S>): S {
   if (typeof selector === 'function') {
     return selector(props)
   }
 
-  return props[selector as keyof P] as S
+  return props[selector as keyof Props] as S
 }
 
-export function variants<P = any, V = any>(selector: PropSelector<P, V>, match: MatchObject<P, V>): StyleFn<P> {
-  return ((props: P) => {
+export function variants<V = any>(selector: PropSelector<V>, match: MatchObject<V>): StyleFn {
+  return ((props: Props) => {
     const prop = extractPropFromSelector(props, selector)
 
     const variant = match[prop] as any
 
     return variant?.(props)
-  }) as StyleFn<P>
+  }) as StyleFn
 }
 
-export function ifProp<P = any, V = any>(selector: PropSelector<P, V>, then: StyleFn<P>, or?: StyleFn<P>) {
-  return variants<P>(props => !!extractPropFromSelector(props, selector), {
+export function ifProp<V = any>(selector: PropSelector<V>, then: StyleFn, or?: StyleFn) {
+  return variants<Props>(props => !!extractPropFromSelector(props, selector), {
     true: then,
     false: or,
   })
 }
 
-export function ifNotProp<P = any, V = any>(selector: PropSelector<P, V>, then: StyleFn<P>) {
+export function ifNotProp<V = any>(selector: PropSelector<V>, then: StyleFn) {
   return variants(props => !!extractPropFromSelector(props, selector), {
     false: then,
   })
