@@ -1,0 +1,21 @@
+{
+  "name": "@lmpx-theme/tools",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn lib build",
+    "prepack": "yarn build",
+    "postpack": "rm -rf ./dist"
+  },
+  "dependencies": {
+    "polished": "^4.2.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "main": "dist/index.js",
+    "typings": "dist/index.d.ts"
+  }
+}

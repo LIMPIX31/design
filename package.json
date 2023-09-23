@@ -6,7 +6,7 @@
     "feature-sliced/**/*"
   ],
   "devDependencies": {
-    "@lmpx-config/eslint": "0.0.6",
+    "@lmpx-config/eslint": "0.0.8",
     "eslint": "^8.42.0",
     "prettier": "^2.8.8",
     "typescript": "~5.0.4"
